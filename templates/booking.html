@@ -1,0 +1,76 @@
+{% extends './base.html' %}
+{% block content %}
+
+<div class="container" style="display: flex;align-items: center;justify-content: center;margin-top: 50px;">
+    <div class='jumbotron' style='width: 100%; '>
+
+        <center>
+            <div style="margin-bottom: 40px;">
+                <h1>Welcome to Book Ticket Reservation {{request.user.username}} !</h1>
+            </div>
+        </center>
+
+        <form method='POST' action='http://127.0.0.1:8000/reservation/book/'>
+            {% csrf_token %}
+
+            <div class="form-group row">
+                <label class='form-label col-sm-2' for="name">Source</label>
+                <div class='col-sm-10'>
+
+                    <select class="form-control" id="source" name="source">
+                        {%for t in sources%}
+                        <option value={{t}}>{{t}}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <label class='form-label col-sm-2' for="name">Destination</label>
+                <div class='col-sm-10'>
+                  
+                    <select class="form-control" id="destination" name="destination">
+                        {%for t in destinations%}
+                        <option value={{t}}>{{t}}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class='form-label col-sm-2' for="name">Coach</label>
+                <div class='col-sm-10'>
+                  
+                    <select class="form-control" id="coach" name="coach">
+                        
+                        <option value="First Class">First Class</option>
+                        <option value="Sleeper Class">Sleeper Class</option>
+                        <option value="AC Chair">AC Chair</option>
+                        
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class='form-label col-sm-2' for="name">Date</label>
+                <div class='col-sm-10'>
+                  
+                    <input type="date" id="rdate" name="rdate" >
+
+                </div>
+            </div>
+          
+
+           
+           
+
+            <center><input type="submit" class="btn btn-success" value='Search Train'></center>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

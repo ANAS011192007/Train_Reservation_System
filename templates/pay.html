@@ -1,0 +1,77 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+    
+
+
+    <div class="container" style="display: flex;align-items: center;justify-content: center;margin-top: 50px;">
+
+        <div class='jumbotron' style='width: 60%; '>
+
+        <center><h2> Payment </h2></center>
+
+            <form method='POST' action='http://127.0.0.1:8000/reservation/payupdate/{{p.id}}'>
+                {% csrf_token %}
+    
+                    
+
+                        <div class="form-group row center"> 
+                            <label class='form-label col-sm-3' for="name">Train ID : </label>
+                                <label class='form-label col-sm-0' for="name">{{p.train.pk}} </label>
+                        </div>
+
+                        <div class="form-group row center"> 
+                            <label class='form-label col-sm-3' for="name">Train Name : </label>
+                                <label class='form-label col-sm-0' for="name">{{p.train.train_name}} </label>
+                        </div>
+
+                        <div class="form-group row center"> 
+                            <label class='form-label col-sm-3' for="name">Source : </label>
+                                <label class='form-label col-sm-0' for="name">{{p.train.source}} </label>
+                        </div>
+
+                        <div class="form-group row center"> 
+                            <label class='form-label col-sm-3' for="name">Destination : </label>
+                                <label class='form-label col-sm-0' for="name">{{p.train.destination}} </label>
+                        </div>
+
+
+                        <div class="form-group row center"> 
+                            <label class='form-label col-sm-3' for="name">Name : </label>
+                                <label class='form-label col-sm-0' for="name">{{p.name}} </label>
+                        </div>
+
+                        <div class="form-group row center"> 
+                            <label class='form-label col-sm-3' for="name">Date and time : </label>
+                                <label class='form-label col-sm-0' for="name">{{p.date_and_time_of_booking}} </label>
+                        </div>
+
+                        <div class="form-group row center"> 
+                            <label class='form-label col-sm-3' for="name">Price : </label>
+                                <label class='form-label col-sm-0' for="name">{{p.train.price}} </label>
+                        </div>
+
+
+                       
+                        
+                    <div class="font-weight-bold"> Send amount of {{p.train.price}} in bkash number +8801826557650. </div> <br>
+
+
+                    <div class="form-group row center"> 
+                        <label class='form-label col-sm-3' for="name">Transaction No : </label>
+                            
+                            <input type="text" id="transaction_no">
+                    </div>
+                    <br>
+    
+                <center><input type="submit" class="btn btn-success" value='Confirm Payment'></center>
+    
+            </form>
+
+            </div>
+
+        
+</div>
+
+{% endblock %}
